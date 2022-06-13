@@ -1,1 +1,9 @@
-# Maze-Algorithm
+Maze-Algorithm
+===========
+
+사양
+----
+
+- 유니티 엔진
+- 3D
+- 2021.3.4f1 에디터
