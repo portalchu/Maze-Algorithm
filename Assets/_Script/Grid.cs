@@ -33,6 +33,7 @@ public class Grid : MonoBehaviour
 
         parentGrid = new GameObject("parentGrid");
 
+        // 
         grid = new Node[(int)gridWorldSize.x, (int)gridWorldSize.y];
         Vector3 worldBottomLeft = Vector3.zero - Vector3.right * gridWorldSize.x / 2 - 
             Vector3.forward * gridWorldSize.y / 2;
@@ -45,12 +46,21 @@ public class Grid : MonoBehaviour
                     Vector3.forward * (y + 0.5f);
                 GameObject obj = Instantiate(groundPrefab, worldPoint, Quaternion.Euler(90, 0, 0));
                 obj.transform.parent = parentGrid.transform;
-                grid[x, y] = new Node(obj, true, x, y);
+                grid[x, y] = new Node(false, x, y);
+
+                if (x == 0 && y == 0)
+                {
+                    Node node = obj.GetComponent<Node>();
+                    node.ChangeStart = true;
+                }
+
+                if (x == (int)gridWorldSize.x - 1 && y == (int)gridWorldSize.y - 1)
+                {
+                    Node node = obj.GetComponent<Node>();
+                    node.ChangeEnd = true;
+                }
             }
         }
-
-
     }
-
     
 }

@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Node : MonoBehaviour
 {
-    public GameObject ground;   // 노드로 사용할 프리팹
     public bool wall;           // 벽 여부
     public int x;               // x 위치
     public int y;               // y 위치
+
+    public bool start;
+    public bool end;
 
     void Start()
     {
@@ -21,11 +23,56 @@ public class Node : MonoBehaviour
     }
 
     // 노드 생성자
-    public Node(GameObject _ground, bool _wall, int _x, int _y)
+    public Node(bool _wall, int _x, int _y)
     {
-        ground = _ground;
         wall = _wall;
         x = _x;
         y = _y;
+    }
+
+    public bool ChangeWall
+    {
+        set
+        {
+            Color color = value ? Color.gray : Color.white;
+            wall = value;
+            GetComponent<MeshRenderer>().material.color = color;
+        }
+    }
+
+    public bool ChangeStart
+    {
+        set
+        {
+            if (value)
+            {
+                start = value;
+                Color color = Color.black;
+                GetComponent<MeshRenderer>().material.color = color;
+            }
+            else
+            {
+                start = value;
+                ChangeWall = wall;
+            }
+        }
+    }
+
+    public bool ChangeEnd
+    {
+        set
+        {
+            if (value)
+            {
+                end = value;
+                Color color = Color.red;
+                GetComponent<MeshRenderer>().material.color = color;
+            }
+            else
+            {
+                end = value;
+                ChangeWall = wall;
+            }
+        }
     }
 }
