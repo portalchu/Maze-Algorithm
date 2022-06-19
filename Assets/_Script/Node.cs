@@ -4,22 +4,30 @@ using UnityEngine;
 
 public class Node : MonoBehaviour
 {
-    public bool wall;           // 벽 여부
+    public bool wall = false;           // 벽 여부
     public int x;               // x 위치
     public int y;               // y 위치
 
-    public bool start;
-    public bool end;
+    public bool start = false;
+    public bool end = false;
+
+    public int cost = 1000000;
+    public Node pastNode;
+
+    public TextMesh textMesh;
 
     void Start()
     {
-        
+        textMesh = GetComponentInChildren<TextMesh>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (cost < 100000)
+        {
+            textMesh.text = cost.ToString();
+        }
     }
 
     // 노드 생성자
@@ -73,6 +81,14 @@ public class Node : MonoBehaviour
                 end = value;
                 ChangeWall = wall;
             }
+        }
+    }
+
+    public Color ChangeColor
+    {
+        set
+        {
+            GetComponent<MeshRenderer>().material.color = value;
         }
     }
 }

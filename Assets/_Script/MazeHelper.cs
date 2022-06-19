@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MazeHelper : MonoBehaviour
 {
+    public Grid grid;
     bool isClick = false;
 
     // Start is called before the first frame update
@@ -101,12 +102,14 @@ public class MazeHelper : MonoBehaviour
                     node.ChangeStart = true;
                     oldNode.ChangeStart = false;
                     oldNode = node;
+                    grid.start = node;
                 }
                 else if (!start && !node.start)
                 {
                     node.ChangeEnd = true;
                     oldNode.ChangeEnd = false;
                     oldNode = node;
+                    grid.end = node;
                 }
             }
 
