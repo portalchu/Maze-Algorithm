@@ -83,7 +83,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6505965323688474912}
-  m_Text: asd
+  m_Text: 
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -214,7 +214,8 @@ MonoBehaviour:
   y: 0
   start: 0
   end: 0
-  cost: 0
+  gCost: 0
+  hCost: 0
   pastNode: {fileID: 0}
   textMesh: {fileID: 0}
 --- !u!54 &1329779899470719730
